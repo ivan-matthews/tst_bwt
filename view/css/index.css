@@ -1,0 +1,48 @@
+body {
+  background: rgba(0, 0, 0, 0.05);
+}
+body main.container {
+  margin: 0 auto;
+  height: 100%;
+}
+body main.container .sidebar {
+  background: #fff;
+}
+body main.container .content {
+  background: #fff;
+}
+body main.container .content .form-content .form-head {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+body main.container .content form .errors .error {
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+}
+body main.container .content form .send-form-button {
+  border-top: rgba(0, 0, 0, 0.125) 1px solid;
+  margin-top: 1em;
+  padding-top: 1em;
+}
+body main.container .content .contacts .contact-head {
+  font-weight: bold;
+}
+body main.container .content .contacts .contact {
+  border: solid 1px rgba(0, 0, 0, 0.125);
+}
+body main.container .content .contacts .contact .menu a.add {
+  color: #4acc4f;
+}
+body main.container .content .contacts .contact .menu a.del {
+  color: #ff470e;
+}
+body main.container .content .engine-error {
+  color: #ff470e;
+  margin-top: 30%;
+}

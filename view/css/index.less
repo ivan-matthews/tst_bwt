@@ -1,0 +1,72 @@
+@fon: rgba(0,0,0,0.05);
+@border: rgba(0,0,0,0.125);
+@white: #fff;
+@success: #4acc4f;
+@danger: #ff470e;
+
+body{
+	background: @fon;
+	main{
+		&.container{
+			margin: 0 auto;
+			height: 100%;
+			.sidebar{
+				background: @white;
+			}
+			.content{
+				background: @white;
+				.form-content{
+					.form-head{
+						font-weight: bold;
+						font-size: 18px;
+						text-align: center;
+						border-bottom: 1px solid @border;
+						padding-bottom: 1em;
+						margin-bottom: 1em;
+						margin-top: 1em;
+					}
+					.form-body{}
+				}
+				form{
+					.errors{
+						.error{
+							color: red;
+							font-size: 12px;
+							font-weight: bold;
+						}
+					}
+					.send-form-button{
+						border-top: @border 1px solid;
+						margin-top: 1em;
+						padding-top: 1em;
+					}
+				}
+				.contacts{
+					.contact-head{
+						font-weight: bold;
+					}
+					.contact{
+						border: solid 1px @border;
+						.id{}
+						.name{}
+						.date{}
+						.menu{
+							a{
+								&.add{
+									color: @success;
+								}
+								&.del{
+									color: @danger;
+								}
+							}
+						}
+					}
+				}
+				.engine-error{
+					color: @danger;
+					margin-top: 30%
+				}
+			}
+		}
+	}
+}
