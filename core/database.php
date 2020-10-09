@@ -16,6 +16,8 @@
 		private $result;
 		private $config;
 
+		private $prepared_data = array();
+
 		public static function getInstance(){
 			if(self::$instance === null){
 				self::$instance = new self();
@@ -66,29 +68,40 @@
 		}
 
 		private function setLcMessages($locale){
-			$this->exec("SET lc_messages = '{$locale}';");
+			$this->query("SET lc_messages = '{$locale}';")->exec();
 			return $this;
 		}
 
 		private function setSqlMode($sql_mode){
-			$this->exec("SET sql_mode='{$sql_mode}';");
+			$this->query("SET sql_mode='{$sql_mode}';")->exec();
 			return $this;
 		}
 
 		private function setTimezone(){
-			$this->exec("SET `time_zone` = '" . date('P') . "';");
+			$this->query("SET `time_zone` = '" . date('P') . "';")->exec();
 			return $this;
 		}
 
-		public function exec($sql_query,$prepared_data=array()){
+		public function query($sql_query){
 			$this->query = $sql_query;
-			if($prepared_data){
-				$this->query =$this->prepare($prepared_data);
+			return $this;
+		}
+
+		public function prepare($field,$value){
+			$this->prepared_data[$field] = $value;
+			return $this;
+		}
+
+		public function exec(){
+			if($this->prepared_data){
+				$this->query =$this->preparing($this->prepared_data);
 			}
 			$this->result = $this->connect->query($this->query);
 			if($this->connect->errno){
 				dd($this->connect->error_list,$this->query);
 			}
+			$this->prepared_data = array();
+			$this->query = null;
 			return $this;
 		}
 
@@ -100,7 +113,7 @@
 			return $this->result;
 		}
 
-		private function prepare(array $prepared_data){
+		private function preparing(array $prepared_data){
 			$data_keys = array();
 			$data_values = array();
 			foreach($prepared_data as $key=>$value){

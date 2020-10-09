@@ -10,12 +10,12 @@
 
 	require "loader.php";
 
+	$config = Config::getInstance();
+	$request = Request::getInstance();
+
 	$session = Session::getInstance();
 	$session->start();
 	$session->validateUser();
-
-	$config = Config::getInstance();
-	$request = Request::getInstance();
 
 	$router = Router::getInstance();
 	$router->setController();

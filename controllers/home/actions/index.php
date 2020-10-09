@@ -16,7 +16,7 @@
 			$this->redirectLink('/');
 		}
 
-		public function GET(){
+		public function getMethod(){
 			if(!$this->user->logged()){
 				return $this->redirect('/auth');
 			}

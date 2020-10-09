@@ -83,42 +83,6 @@
 			return null;
 		}
 
-//----------------------------------------------------------------------------------------//
-//----------------------------------------------------------------------------------------//
-//----------------------------------------------------------------------------------------//
-
-		public function required($field_name,$value){
-			if($value && !$this->fields[$field_name]['value']){
-				$this->setError($field_name,'Field required!');
-			}
-			return $this;
-		}
-
-		public function email($field_name,$value){
-			if($value && $value != filter_var($this->fields[$field_name]['value'],FILTER_VALIDATE_EMAIL)){
-				$this->setError($field_name,'Field must be valid email');
-			}
-			return $this;
-		}
-
-		public function min($field_name,$value){
-			if($value && mb_strlen($this->fields[$field_name]['value']) < $value){
-				$this->setError($field_name,'Min size: ' . $value);
-			}
-			return $this;
-		}
-
-		public function max($field_name,$value){
-			if($value && mb_strlen($this->fields[$field_name]['value']) > $value){
-				$this->setError($field_name,'Max size: ' . $value);
-			}
-			return $this;
-		}
-
-//----------------------------------------------------------------------------------------//
-//----------------------------------------------------------------------------------------//
-//----------------------------------------------------------------------------------------//
-
 		public function validate(callable $callback = null){
 			if($callback){
 				call_user_func($callback,$this);
@@ -128,10 +92,11 @@
 		}
 
 		private function validateFields(){
+			$validator = new Validator($this,$this->fields);
 			foreach($this->fields as $field_name => $attributes){
 				foreach($attributes as $method => $value){
-					if(method_exists($this,$method)){
-						call_user_func(array($this,$method),$field_name,$value);
+					if(method_exists($validator,$method)){
+						call_user_func(array($validator,$method),$field_name,$value);
 					}
 				}
 			}

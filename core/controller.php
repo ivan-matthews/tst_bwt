@@ -54,6 +54,9 @@
 			return $this;
 		}
 
+		protected function getConfig($controller){
+			return include get_path("controllers/{$controller}/assets/config.php");
+		}
 
 
 

@@ -16,7 +16,7 @@
 			$this->redirect_link = $this->session->getSession('redirect_link');
 		}
 
-		public function GET($contact_id){
+		public function getMethod($contact_id){
 			if(!$this->user->logged()){
 				return $this->redirect('/auth');
 			}

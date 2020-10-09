@@ -114,7 +114,7 @@
 		}
 
 		protected function setActionMethod($request_method){
-			$this->action_method = $request_method;
+			$this->action_method = "{$request_method}Method";
 			return $this;
 		}
 

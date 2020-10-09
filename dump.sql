@@ -30,7 +30,7 @@ CREATE TABLE `contacts` (
   `id` bigint(30) NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `date_created` int(191) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `contacts`
@@ -69,7 +69,7 @@ CREATE TABLE `users` (
   `name` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `login` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE `users_contacts` (
   `contact_id` bigint(20) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `date_created` int(191) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Индексы сохранённых таблиц
